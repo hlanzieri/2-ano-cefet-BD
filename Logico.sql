@@ -1,5 +1,3 @@
-/* Lógico_1: */
-
 CREATE TABLE Professor (
     Codigo NUMERIC PRIMARY KEY,
     Nome CHARACTER
