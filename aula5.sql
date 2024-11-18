@@ -96,33 +96,40 @@ select nome, telefone from Empregado where telefone is not null;
 
 /*16) Apresentar uma consulta que exiba todos os dados dos empregados cujo nome iniciam
 com a sequência de caracteres “Ma”.*/
+SELECT * FROM Empregado WHERE nome LIKE 'Ma%';
 
 /*17) Apresentar uma consulta que exiba todos os dados dos empregados que possuem a
 sequência de caracteres “eir” em qualquer posição do nome. O resultado deve ser
 apresentado em ordem crescente.*/
+SELECT * FROM Empregado WHERE nome LIKE '%eir%' ORDER BY nome ASC;
 
 /*18) Apresentar uma consulta que exiba o nome do cargo e seu respectivo salário ajustado
 com um aumento de 10%. O nome da coluna deverá ser “Novo Salário”.*/
+SELECT nomecargo, salario * 1.10 AS "Novo Salário" FROM Cargo;
 
 /*19) Apresentar uma consulta que exiba o nome do empregado e o nome do cargo que o
 empregado possui.*/
-
+SELECT Empregado.nome, Cargo.nomecargo FROM Empregado INNER JOIN Cargo ON  Empregado.codcargo = Cargo.codcargo;
+    
 /*20) Apresentar uma consulta que exiba o nome do empregado e a sigla do órgão em que o
 empregado está lotado.*/
+SELECT Empregado.nome, Orgao.siglaorgao FROM Empregado INNER JOIN Orgao ON Empregado.siglaorgao = Orgao.siglaorgao;
 
 /*21) Apresentar uma consulta que exiba o nome e o salário de maior valor. A coluna deverá ser
 exibida com o nome “Maior Salário.*/
-
+SELECT Empregado.nome, Cargo.salario AS "Maior Salário" FROM Empregado INNER JOIN Cargo ON Empregado.codcargo = Cargo.codcargo WHERE Cargo.salario = (SELECT MAX(salario) FROM Cargo);
+    
 /*22) Apresentar uma consulta que exiba o nome e o salário de menor valor. A coluna deverá
 ser exibida com o nome “Menor Salário”.*/
+SELECT Empregado.nome, Cargo.salario AS "Menor Salário" FROM Empregado INNER JOIN Cargo ON Empregado.codcargo = Cargo.codcargo WHERE Cargo.salario = (SELECT MIN(salario) FROM Cargo);
 
 /*23) Apresentar uma consulta que exiba a média de todos os salários cadastrados. A coluna
 deverá ser exibida com o nome “Média Salarial”.*/
+SELECT AVG(Cargo.salario) AS "Média Salarial" FROM Cargo;
 
 /*24) Apresentar uma consulta que exiba a quantidade de Cargos cadastrados.*/
+SELECT COUNT(*) AS "Quantidade de Cargos" FROM Cargo;
 
 /*25) Apresentar uma consulta que exiba o nome do órgão e o nome do cargo para todos os
 cargos ofertados por cada órgão.*/
-
-
-
+SELECT Orgao.nomeorgao, Cargo.nomecargo FROM Orgao INNER JOIN Empregado ON Orgao.codorgao = Empregado.codorgao INNER JOIN Cargo ON Empregado.codcargo = Cargo.codcargo;
