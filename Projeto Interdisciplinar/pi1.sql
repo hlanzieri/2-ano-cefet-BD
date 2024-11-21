@@ -1,0 +1,34 @@
+use projetos_INF2024_G10;
+
+CREATE TABLE USUARIO(
+IdUsuario int(6) NOT NULL,
+Nome Char(50) NOT NULL,
+Email Char(50) NOT NULL,
+Senha Char(15) NOT NULL,
+CONSTRAINT PK_USUARIO PRIMARY KEY(IdUsuario));
+
+CREATE TABLE POST(
+IdPost int(6) NOT NULL,
+Titulo Char(50) NOT NULL,
+Conteudo Char(255) NOT NULL,
+DataPublicacao DATE,
+CONSTRAINT PK_POST PRIMARY KEY(IdPost));
+
+CREATE TABLE COMENTARIO(
+IdComentario int(6) NOT NULL,
+Conteudo Char(150) NOT NULL,
+DataComent DATE,
+CONSTRAINT PK_COMENTARIO PRIMARY KEY(IdComentario));
+
+CREATE TABLE FOTO(
+IdFoto int(6) NOT NULL,
+Url Char(100) NOT NULL,
+Descricao Char(100) NOT NULL,
+CONSTRAINT PK_FOTO PRIMARY KEY(IdFoto));
+
+CREATE TABLE DESTINO(
+IdDestino int(6) NOT NULL,
+Nome Char(50) NOT NULL,
+Localizacao Char(70) NOT NULL,
+Descricao Char(200) NOT NULL,
+CONSTRAINT PK_DESTINO PRIMARY KEY(IdDestino));
